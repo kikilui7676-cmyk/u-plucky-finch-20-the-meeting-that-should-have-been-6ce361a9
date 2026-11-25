@@ -1,16 +1,12 @@
 import os
 from pathlib import Path
 
-SETUP = "Our meeting's one decision: schedule another meeting"
-TWIST = "to decide what the email should have said."
-LINE = SETUP + " " + TWIST
+LINE = "Agenda: one bullet point. Duration: one hour. Outcome: another meeting."
 
-def main():
+def main() -> None:
     out_dir = Path(os.environ["MAKEFUN_OUTPUT_DIR"])
     out_dir.mkdir(parents=True, exist_ok=True)
-    with open(out_dir / "entry.txt", "w", encoding="utf-8") as handle:
-        handle.write(LINE + "\n")
-
+    (out_dir / "entry.txt").write_text(LINE + "\n", encoding="utf-8")
 
 if __name__ == "__main__":
     main()
